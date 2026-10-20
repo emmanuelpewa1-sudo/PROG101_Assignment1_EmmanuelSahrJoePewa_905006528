@@ -1,0 +1,44 @@
+PROG101 ASSIGNMENT 1
+COMMUNITY WASTE REPORTING AND MANAGEMENT SYSTEM (CWRMS)
+
+ALGORITHM 1: RESIDENT WASTE REPORTING
+
+Purpose:
+To allow residents to submit waste-related reports.
+
+Steps:
+1. Start.
+2. Display a welcome message.
+3. Enter the location, category and description of the waste problem.
+4. Ask whether the resident wants to upload a photograph.
+5. If Yes, enter the photograph. If No, continue without a photograph.
+6. Check whether the required report details are valid.
+7. If the details are invalid, display an error message and allow the resident to correct them.
+8. If the details are valid, generate a report reference number.
+9. Save the report details.
+10. Set the report status to Pending.
+11. Display a confirmation message and reference number.
+12. Ask whether the resident wants to submit another report.
+13. If Yes, return to Step 3.
+14. If No, end the process.
+
+ALGORITHM 2: ADMINISTRATIVE REPORT MANAGEMENT
+
+Purpose:
+To allow an authorised operator to manage submitted reports.
+
+Steps:
+1. Start.
+2. Display the administrative menu.
+3. Ask the operator to select an option.
+4. If the operator selects View Reports, display the submitted reports.
+5. If the operator selects Assign Priority, ask for the report reference number and priority.
+6. Check whether the priority selection is valid.
+7. If valid, save the priority and display a confirmation message.
+8. If invalid, display an error message and allow another selection.
+9. If the operator selects Update Report Status, ask for the report reference number and new status.
+10. Check whether the status selection is valid.
+11. If valid, save the new status and display a confirmation message.
+12. If invalid, display an error message and allow another selection.
+13. If the operator selects Exit, end the session.
+14. Otherwise, return to the administrative menu.
