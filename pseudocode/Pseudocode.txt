@@ -1,0 +1,142 @@
+PROG101 ASSIGNMENT 1
+COMMUNITY WASTE REPORTING AND MANAGEMENT SYSTEM (CWRMS)
+
+
+ALGORITHM 1: RESIDENT WASTE REPORTING
+
+BEGIN
+
+    DISPLAY "Welcome to CWRMS"
+
+    SET anotherReport = "YES"
+
+    WHILE anotherReport = "YES" DO
+
+        INPUT location
+        INPUT category
+        INPUT description
+
+        DISPLAY "Do you want to upload a photograph? YES/NO"
+        INPUT photoChoice
+
+        IF photoChoice = "YES" THEN
+            INPUT photo
+        ELSE
+            DISPLAY "No Photo Attached"
+        ENDIF
+
+        IF location is empty OR
+           description is empty OR
+           category is invalid THEN
+
+            DISPLAY "Please enter valid report details"
+
+        ELSE
+
+            GENERATE reportReference
+            SAVE report details
+            SET reportStatus = "Pending"
+
+            DISPLAY "Report submitted successfully"
+            DISPLAY reportReference
+            DISPLAY reportStatus
+
+        ENDIF
+
+        DISPLAY "Do you want to submit another report? YES/NO"
+        INPUT anotherReport
+
+    ENDWHILE
+
+    DISPLAY "Thank you for using CWRMS"
+
+END
+
+
+ALGORITHM 2: ADMINISTRATIVE REPORT MANAGEMENT
+
+BEGIN
+
+    SET continueManagement = "YES"
+
+    WHILE continueManagement = "YES" DO
+
+        DISPLAY "1. View Reports"
+        DISPLAY "2. Assign Priority"
+        DISPLAY "3. Update Report Status"
+        DISPLAY "4. Exit"
+
+        INPUT choice
+
+        IF choice = 1 THEN
+
+            DISPLAY all reports
+
+        ELSE IF choice = 2 THEN
+
+            INPUT reportReference
+
+            DISPLAY "1. High"
+            DISPLAY "2. Medium"
+            DISPLAY "3. Low"
+
+            INPUT priorityChoice
+
+            IF priorityChoice = 1 THEN
+                SET priority = "High"
+            ELSE IF priorityChoice = 2 THEN
+                SET priority = "Medium"
+            ELSE IF priorityChoice = 3 THEN
+                SET priority = "Low"
+            ELSE
+                DISPLAY "Invalid priority"
+            ENDIF
+
+            IF priority is valid THEN
+                SAVE priority
+                DISPLAY "Priority assigned successfully"
+            ENDIF
+
+        ELSE IF choice = 3 THEN
+
+            INPUT reportReference
+
+            DISPLAY "1. Pending"
+            DISPLAY "2. Under Review"
+            DISPLAY "3. In Progress"
+            DISPLAY "4. Resolved"
+
+            INPUT statusChoice
+
+            IF statusChoice = 1 THEN
+                SET reportStatus = "Pending"
+            ELSE IF statusChoice = 2 THEN
+                SET reportStatus = "Under Review"
+            ELSE IF statusChoice = 3 THEN
+                SET reportStatus = "In Progress"
+            ELSE IF statusChoice = 4 THEN
+                SET reportStatus = "Resolved"
+            ELSE
+                DISPLAY "Invalid status"
+            ENDIF
+
+            IF reportStatus is valid THEN
+                SAVE reportStatus
+                DISPLAY "Report status updated successfully"
+            ENDIF
+
+        ELSE IF choice = 4 THEN
+
+            SET continueManagement = "NO"
+
+        ELSE
+
+            DISPLAY "Invalid menu choice"
+
+        ENDIF
+
+    ENDWHILE
+
+    DISPLAY "Goodbye"
+
+END
